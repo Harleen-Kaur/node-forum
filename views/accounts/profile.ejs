@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Forum- Profile</title>
+
+    <link href='../../../../../../fonts.googleapis.com/css5ee6.css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.0.3/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+
+    <link href="font-awesome-4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="bootstrap-3.0.3/css/bootstrap-datepicker.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body><h1 class="hidden">Forums</h1>
+<div class="header-background"></div>
+
+<div class="container">
+<!-- Header -->
+    <section>
+        <header class="row header">
+            <div class="col-md-12">
+                <nav class="navbar navbar-inverse" role="navigation"><h1 class="hidden">Login Form</h1>
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <img src= "<%=user.profile.picture%>" width="60" height="60" class="pull-left" alt="User Photo" />
+                        <p class="navbar-text"><%=user.profile.name.firstname%>&nbsp;<%=user.profile.name.lastname %></p>
+                        <form class="navbar-form navbar-left" role="search" action="logout">
+                            <button type="submit" class="btn btn-default">Logout</button>
+                        </form>
+
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Preferences <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li class="active"><a href="#">Profile</a></li>
+                                    <li><a href="#">Setting</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Control <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="forums-moderators.html">Moderators</a></li>
+                                    <li><a href="#">Users</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+
+                <div class="jumbotron">
+                    <h1>FORUMS <span></span></h1>
+                </div>
+
+                <nav class="navbar navbar-default" role="navigation"><h1 class="hidden">Main Menu</h1>
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                        <ul class="nav navbar-nav">
+                            <li><a href="index.html">HOME</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="about.html">ABOUT</a></li>
+                            <li><a href="contact.html">CONTACT</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <span class="glyphicon glyphicon-search"></span>
+                                <input class="form-control" type="text" placeholder="Search">
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+
+                <ol class="breadcrumb">
+                    <li><a href="home">Home</a></li>
+                    <li class="active">Profile</li>
+                </ol>
+            </div>
+        </header>
+    </section>
+
+    <!-- Profile -->
+    <section class="row"><h1 class="hidden">Content</h1>
+        <section class="col-md-8 main">
+            <h1>MY PROFILE</h1>
+
+
+            <% if(message.length > 0){ %>
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss= "alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <%= message %>
+            </div>
+            <% } %>
+
+
+            <!-- General Information -->
+            <section class="general-information">
+                <!-- General Information Header -->
+                <header class="row">
+                    <div class="col-md-12">
+                        <h3>General Information</h3>
+                    </div>
+                </header>
+
+                <!-- General Information Form -->
+                <form method="post" action="edit-profile">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="firstName" class="required">First Name</label>
+                            <input type="text" class="form-control input-lg" id="firstName" name="firstname" value="<%= user.profile.name.firstname%>">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="required">Last Name</label>
+                            <input type="text" class="form-control input-lg" id="lastName" name="lastname" value="<%= user.profile.name.lastname%>">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="img/upload-photo.gif" width="152" height="152" alt="User Photo" />
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-primary" name="uploadPhoto">UPLOAD PHOTO</button>
+                        <p><span>Note:</span> Files less than 2MB are accepted.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Account Information -->
+            <section class="account-information">
+                <!-- Account Information Header -->
+                <header class="row">
+                    <div class="col-md-12">
+                        <h3>Account Information</h3>
+                    </div>
+                </header>
+
+                <!-- Account Information Form -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="username" class="required">Username</label>
+                            <input type="text" class="form-control input-lg" id="username" name="username" readonly=true  value="<%= user.username%>">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="required">Email</label>
+                            <input type="text" class="form-control input-lg" id="email" name="email" value="<%= user.email%>">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Update Button -->
+            <section><h4 class="hidden">Update</h4>
+                <div class="row update">
+                    <div class="col-md-12">
+                        <div class="underline"></div>
+                        <button type="submit" class="btn btn-primary pull-right" name="updateProfile">UPDATE</button>
+                    </div>
+                </div>
+            </section>
+            </form>
+
+            <!-- Change Password -->
+            <section class="change-password">
+                <!-- Change Password Header -->
+                <header class="row">
+                    <div class="col-md-12">
+                        <h3>Change password</h3>
+                    </div>
+                </header>
+
+                <!-- Change Password Form -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="oldPassword" class="required">Old Password</label>
+                            <input type="password" class="form-control input-lg" id="oldPassword" name="oldPassword">
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword" class="required">New Password</label>
+                            <input type="password" class="form-control input-lg" id="newPassword" name="newPassword">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword" class="required">Confirm Password</label>
+                            <input type="password" class="form-control input-lg" id="confirmPassword" name="confirmPassword">
+                        </div>
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+            </section>
+
+            <!-- Update Button -->
+            <section><h4 class="hidden">Update</h4>
+                <div class="row update">
+                    <div class="col-md-12">
+                        <div class="underline"></div>
+                        <button type="button" class="btn btn-primary pull-right" name="update-password">UPDATE</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <div class="col-md-1"></div>
+        <aside class="col-md-3 sidebar"><h3 class="hidden">Sidebar</h3>
+            <!-- Preferences -->
+            <section>
+                <h4><i class="fa fa-user red"></i>PREFERENCES</h4>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="#">Profile</a></li>
+                    <li class="list-group-item"><a href="#">Setting</a></li>
+                    <li class="list-group-item"><a href="/logout">Logout</a></li>
+                </ul>
+            </section>
+
+            <!-- Latest News -->
+            <section>
+                <h4><i class="fa fa-rss red"></i>LATEST NEWS</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi.<br />
+                        <span>By <a href="#" class="author">John Doe, <time datetime="2013-04-02">02 Apr 2013</time></a></span>
+                    </li>
+                    <li class="list-group-item">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi.<br />
+                        <span>By <a href="#" class="author">John Doe, <time datetime="2013-04-02">02 Apr 2013</time></a></span>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+    </section>

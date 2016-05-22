@@ -1,0 +1,98 @@
+<% layout('layout') -%>
+
+    <!-- Sign up -->
+    <section class="row"><h1 class="hidden">Content</h1>
+        <div class="col-md-2"></div>
+        <section class="col-md-8 main">
+            <h1>SIGN UP</h1>
+
+            <% if(errors.length > 0){ %>
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss= "alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <%= errors %>
+            </div>
+            <% } %>
+
+            <form method="post">
+            <!-- General Information -->
+            <section class="general-information">
+                <!-- General Information Header -->
+                <header class="row">
+                    <div class="col-md-12">
+                        <h3>General Information</h3>
+                    </div>
+                </header>
+
+                <!-- General Information Form -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="firstName" class="required">First Name</label>
+                            <input type="text" class="form-control input-lg" id="firstName" name="firstname">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="lastName" class="required">Last Name</label>
+                            <input type="text" class="form-control input-lg" id="lastName" name="lastname">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Account Information -->
+            <section class="account-information">
+                <!-- Account Information Header -->
+                <header class="row">
+                    <div class="col-md-12">
+                        <h3>Account Information</h3>
+                    </div>
+                </header>
+
+                <!-- Account Information Form -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="username" class="required">Username</label>
+                            <input type="text" class="form-control input-lg" id="username" name="username">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="email" class="required">Email</label>
+                            <input type="text" class="form-control input-lg" id="email" name="email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="password" class="required">Password</label>
+                            <input type="password" class="form-control input-lg" id="password" name="password">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="confirm-password" class="required">Confirm Password</label>
+                            <input type="password" class="form-control input-lg" id="confirm-password">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Sign up Button -->
+            <section><h4 class="hidden">Sign up</h4>
+                <div class="row update">
+                    <div class="col-md-12">
+                        <div class="underline"></div>
+                        <button type="submit" class="btn btn-primary pull-right">SIGN UP</button>
+                    </div>
+                </div>
+            </section>
+            </form>
+        </section>
+        <div class="col-md-2"></div>
+    </section>
