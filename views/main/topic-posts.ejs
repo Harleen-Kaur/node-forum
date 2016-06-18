@@ -1,0 +1,315 @@
+ <% layout('layout') -%>
+
+    <!-- Posts -->
+    <section class="row"><h1 class="hidden">Content</h1>
+        <section class="col-md-8 main"><h1 class="hidden">Topic</h1>
+            <!-- Topic -->
+            <section class="topic">
+                <!-- Topic Header -->
+                <header class="row topic-header">
+                    <div class="col-md-12">
+                        <i class="fa fa-trash-o pull-right" title="Delete this topic"></i>
+                        <i class="fa fa-pencil edit-forum pull-right" title="Edit this topic"></i>
+                        <h1>I was wondering what is wrong with this world?</h1>
+                    </div>
+                </header>
+
+                <!-- Topic Edit Form -->
+                <section class="edit-form"><h2 class="hidden">Topic Edit Form</h2>
+                    <section><h3 class="hidden">Form Inputs</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="required" for="name">Name</label>
+                                    <input id="name" type="text" class="form-control input-lg" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tags</label>
+                                    <input id="tags" type="hidden" class="form-control" value="brown, red, green" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="required" for="forum">Forum</label>
+                                    <select id="forum" class="form-control selectpicker">
+                                        <option value="1">Announcements</option>
+                                        <option value="2">General Discussion</option>
+                                        <option value="3">Support Center</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="required" for="active">Active / Inactive</label>
+                                    <select id="active" class="form-control selectpicker">
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="required" for="status">Status</label>
+                                    <select id="status" class="form-control selectpicker">
+                                        <option value="1">Open</option>
+                                        <option value="0">Close</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Save Button -->
+                    <section class="row save"><h3 class="hidden">Save</h3>
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary pull-right">SAVE</button>
+                            <div class="clearfix"></div>
+                            <div class="underline"></div>
+                        </div>
+                    </section>
+                </section>
+
+                <!-- Topic Details -->
+                <div class="row details table-responsive">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <tr>
+                                <th rowspan="2"><time datetime="2011-11-12 14:54:39">20 minutes<br />ago</time></th>
+                                <th>STARTED</th>
+                                <th>LAST POST</th>
+                                <th>VIEWS</th>
+                                <th>REPLIES</th>
+                                <th rowspan="2">
+                                    <i class="fa fa-eye-slash pull-right is" title="Click to activate"></i>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>Jane Doe</td>
+                                <td>Jane Doe</td>
+                                <td>40</td>
+                                <td>30</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Posts -->
+            <article><h2 class="hidden">Posts</h2>
+                <!-- Post -->
+                <section class="row"><h3 class="hidden">Post</h3>
+                    <div class="col-md-3 replied-user">
+                        <img src="img/user.png" width="70" height="70" alt="User Photo" />
+                        <span class="user-name">Jane Doe</span>
+                        <span class="user-posts">250 POSTS</span>
+                        <img src="img/icons.png" width="170" height="47" class="icons" alt="Sample Icons" />
+                    </div>
+                    <div class="col-md-9 replied">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa.
+                        </p>
+                        <p>
+                            Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet, nibh.<br />
+                            Duis tincidunt lectus quis dui viverra vestibulum. Suspendisse vulputate aliquam dui. Nulla elementum dui ut augue. Aliquam vehicula mi at mauris.
+                        </p>
+                        <div class="row details">
+                            <div class="col-md-6">
+                                <div class="pull-left">
+                                    <time datetime="2011-11-12 14:54:39">9 days ago</time>
+                                    <a href="#">Reply with Quote</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="pull-right">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                    <span>2,000</span>
+                                    <i class="fa fa-pencil-square-o"></i>
+                                    <i class="fa fa-trash-o"></i>
+                                    <i class="fa fa-eye-slash"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Post -->
+                <section class="row"><h3 class="hidden">Post</h3>
+                    <div class="col-md-3 replied-user">
+                        <img src="img/user.png" width="70" height="70" alt="User Photo" />
+                        <span class="user-name">Jane Doe</span>
+                        <span class="user-type staff">Staff</span>
+                        <span class="user-posts">250 POSTS</span>
+                        <img src="img/icons.png" width="170" height="47" class="icons" alt="Sample Icons" />
+                    </div>
+                    <div class="col-md-9 replied">
+                        <i class="fa fa-quote-left fa-2x"></i>
+                        <p class="previous-reply">
+                            <span>Jane Doe said</span>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa.
+                        </p>
+                        <p>
+                            Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet, nibh.<br />
+                            Duis tincidunt lectus quis dui viverra vestibulum. Suspendisse vulputate aliquam dui. Nulla elementum dui ut augue. Aliquam vehicula mi at mauris.
+                        </p>
+                        <div class="row details">
+                            <div class="col-md-6">
+                                <div class="pull-left">
+                                    <time datetime="2011-11-12 14:54:39">9 days ago</time>
+                                    <a href="#">Reply with Quote</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="pull-right">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                    <span>2,000</span>
+                                    <i class="fa fa-pencil-square-o"></i>
+                                    <i class="fa fa-trash-o"></i>
+                                    <i class="fa fa-eye-slash"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Post -->
+                <section class="row"><h3 class="hidden">Post</h3>
+                    <div class="col-md-3 replied-user">
+                        <img src="img/user.png" width="70" height="70" alt="User Photo" />
+                        <span class="user-name">Jane Doe</span>
+                        <span class="user-posts">250 POSTS</span>
+                        <img src="img/icons.png" width="170" height="47" class="icons" alt="Sample Icons" />
+                    </div>
+                    <div class="col-md-9 replied">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa.
+                        </p>
+                        <p>
+                            Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet, nibh.<br />
+                            Duis tincidunt lectus quis dui viverra vestibulum. Suspendisse vulputate aliquam dui. Nulla elementum dui ut augue. Aliquam vehicula mi at mauris.
+                        </p>
+                        <div class="row details">
+                            <div class="col-md-6">
+                                <div class="pull-left">
+                                    <time datetime="2011-11-12 14:54:39">9 days ago</time>
+                                    <a href="#">Reply with Quote</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="pull-right">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                    <span>2,000</span>
+                                    <i class="fa fa-pencil-square-o"></i>
+                                    <i class="fa fa-trash-o"></i>
+                                    <i class="fa fa-eye-slash"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Subscribe Button -->
+            <section class="row subscribe"><h3 class="hidden">Subscribe</h3>
+                <div class="col-md-12">
+                    <div class="underline"></div>
+                    <button type="button" class="btn btn-primary pull-right">Subscribe to this topic</button>
+                </div>
+            </section>
+
+            <section>
+                <!-- Post A Reply -->
+                <h1>POST A REPLY</h1>
+
+                <div class="row reply">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="message" class="required">Message</label>
+                            <textarea class="form-control input-lg" id="message">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa. Sed eleifend nonummy diam.</textarea>
+                        </div>
+                        <p>
+                            Format your entry with some basic HTML. <a href="#">Read the Full Details</a>, or here is a refresher:<br />
+                            <br />
+                            &lt;strong&gt;&lt;/strong&gt; to make things bold<br />
+                            &lt;em&gt;&lt;/em&gt; to emphasize<br />
+                            &lt;ul&gt;&lt;li&gt; or &lt;ol&gt;&lt;li&gt; to make lists<br />
+                            &lt;h3&gt; or &lt;h4&gt; to make headings<br />
+                            &lt;pre&gt;&lt;/pre&gt; for code blocks<br />
+                            &lt;code&gt;&lt;/code&gt; for a few words of code<br />
+                            &lt;a&gt;&lt;/a&gt; for links<br />
+                            &lt;img&gt; to paste in an image (it'll need to be hosted somewhere else though)<br />
+                            &lt;blockquote&gt;&lt;/blockquote&gt; to quote somebody<br />
+                            <br />
+                            <img src="img/smiley.png" width="81" height="22" alt="Sample Smiley" /><a href="#">Complete List of Smiley Codes</a>
+                        </p>
+
+                        <i class="fa fa-check-circle-o"></i>
+                        <a class="checkbox-label" href="#">Email me when someone posts a reply</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Submit Button -->
+            <section class="row submit"><h3 class="hidden">Submit</h3>
+                <div class="col-md-12">
+                    <div class="underline"></div>
+                    <button type="button" class="btn btn-primary pull-right">SUBMIT</button>
+                </div>
+            </section>
+        </section>
+        <div class="col-md-1"></div>
+        <% if(user){ %>
+        <aside class="col-md-3 sidebar"><h3 class="hidden">Sidebar</h3>
+            <!-- Search -->
+<!--             <section><h4 class="hidden">Search</h4>
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                    <input type="text" class="form-control" placeholder="Search Post">
+                </div>
+            </section> -->
+
+            <!-- Preferences -->
+            <section>
+                <h4><i class="fa fa-user red"></i>PREFERENCES</h4>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="profile">Profile</a></li>
+                    <li class="list-group-item"><a href="#">Setting</a></li>
+                    <li class="list-group-item"><a href="#">Logout</a></li>
+                </ul>
+            </section>
+
+            <!-- Active Threads -->
+<!--             <section>
+                <h4>ACTIVE THREADS</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="#">I was wondering what is wrong with this world?</a><br />
+                        <span>30 Replies</span><br />
+                        <span>Last by <a href="#">John Doe</a>, <time datetime="2011-11-12 14:54:39">20 minutes ago</time></span>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#">I’m going home tonight!</a><br />
+                        <span>30 Replies</span><br />
+                        <span>Last by <a href="#">John Doe</a>, <time datetime="2011-11-12 14:54:39">20 minutes ago</time></span>
+                    </li>
+                </ul>
+            </section> -->
+
+            <!-- Latest News -->
+<!--             <section>
+                <h4><i class="fa fa-rss red"></i>LATEST NEWS</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi.<br />
+                        <span>By <a href="#">John Doe, <time datetime="2013-04-02">02 Apr 2013</time></a></span>
+                    </li>
+                    <li class="list-group-item">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi.<br />
+                        <span>By <a href="#">John Doe, <time datetime="2013-04-02">02 Apr 2013</time></a></span>
+                    </li>
+                </ul>
+            </section> -->
+        </aside>
+        <% } %>
+    </section>

@@ -3,55 +3,28 @@ var router = require('express').Router();
 var User = require('../models/user');
 var passport = require('passport');
 var passportConf = require('../config/passport');
+var home = require('../views/main/home');
 
 router.get('/',function(req,res){
 	res.render('/');
 });
-router.get('/home',function(req,res){
-	res.render('main/home',{
-    title: 'Home',
-    message: req.flash('loginMessage')
-  });
-});
-// router.get('/login', function(req, res){
-// 	if (req.user) return redirect('/');
-// 	res.render('main/home', { message: req.flash('loginMessage')});
-// });
 
 router.post('/login', passport.authenticate('local-login', {
-	successRedirect: '/profile',
+	successRedirect: '/home',
 	failureRedirect: '/home',
 	failureFlash: true
 }));
 
-router.get('/profile', function(req, res, next){
-	// res.json(req.user);
-	console.log(req.user);
-	if(typeof user === 'undefined'){
-		req.flash('error','Please login again!!');
-		return res.redirect('/home');
-	}
-	User.findOne({_id: req.user._id}, function(err,user){
-		if(err)
-			return next(err);
-
-		res.render('accounts/profile', {
-			title: 'My Profile',
-			message: req.flash('success')
-		});
-	});
-});
-
 router.get('/signup', function(req, res, next){
 	res.render('accounts/signup',{
 		title: 'Sign Up',
-		errors: req.flash('errors')
+		message: req.flash('message')
 	});
 });
 
 router.post('/signup', function(req, res, next){
 	var user = new User();
-	console.log(req);
+	console.log(req.body);
 	console.log(res);
 
 	user.profile.name.firstname = req.body.firstname;
@@ -65,7 +38,7 @@ router.post('/signup', function(req, res, next){
 	User.findOne({ username: req.body.username}, function(err, existingUser){
 		if(existingUser){
 			// res.json({error: 'Account with that username already exists'});
-			req.flash('errors', 'Account with that username already exists. Please try with another username');
+			req.flash('message', 'Account with that username already exists. Please try with another username');
 			return res.redirect('/signup');
 		} else{
 			user.save(function(err, user){
@@ -75,7 +48,7 @@ router.post('/signup', function(req, res, next){
 
 				req.logIn(user, function(err){
 				if(err) return next(err);
-				res.redirect('/profile');
+				res.redirect('/home');
 				})
 				// res.json({message: 'Created Successfully'});
 
@@ -84,9 +57,28 @@ router.post('/signup', function(req, res, next){
 	});
 });
 
-router.get('/logout', function(req, res, next){
-	req.logout();
-	res.redirect('home');
+router.get('/profile', function(req, res, next){
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate,max-stale=0, post-check=0, pre-check=0');
+	// res.json(req.user);
+	console.log(req.user);
+	if(req.user != null){
+		User.findOne({_id: req.user._id}, function(err,user){
+			if(err){
+				console.log('Error occurred while loading profile');
+				return res.redirect('/error');
+				// return next(err);
+			}
+
+			res.render('accounts/profile', {
+				title: 'My Profile',
+				message: req.flash('success')
+			});
+		});
+	}
+	else{
+		req.flash('loginMessage','Your session has been ended. Please login again!!');
+		return res.redirect('/home');
+	}
 });
 
 router.post('/profile', function(req, res, next){
@@ -97,10 +89,11 @@ router.post('/profile', function(req, res, next){
 		}
 		console.log(req.body);
 		console.log(user);
-		if(req.body.firstname != '' || req.body.firstname != null)
+		if(req.body.firstname != '')
 			user.profile.name.firstname = req.body.firstname;
 		if(req.body.lastname != '')
-			user.profile.name.firstname = req.body.firstname;
+			user.profile.name.lastname = req.body.lastname;
+
 		if(req.body.email != '')
 			user.profile.email = req.body.email;
 
@@ -114,5 +107,14 @@ router.post('/profile', function(req, res, next){
 		});
 	});
 });
+
+router.get('/logout', function(req, res, next){
+	req.logout();
+	req.session.destroy(function (err) {
+    res.redirect('home'); //Inside a callback… bulletproof!
+  });
+	// res.redirect('home');
+});
+
 
 module.exports = router;

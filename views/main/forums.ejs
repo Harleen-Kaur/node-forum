@@ -1,0 +1,194 @@
+<% layout('layout') -%>
+    <!--    <ol class="breadcrumb">
+                <li><a href="home">Home</a></li>
+                <li><a href="home">Categories</a></li>
+                <li class="active">General</li>
+            </ol> -->
+    <!-- Forums -->
+    <section class="row"><h1 class="hidden">Content</h1>
+        <section class="col-md-8 main"><h1 class="hidden">Category</h1>
+            <!-- Category Header -->
+            <section class="category-header">
+                <i class="fa fa-trash-o pull-right" title="Delete this category"></i>
+                <i class="fa fa-pencil edit-category pull-right" title="Edit this category"></i>
+                <h1>GENERAL</h1>
+            </section>
+
+            <!-- Category Edit Form -->
+            <form method="post" action="edit-category" >
+            <section class="edit-form"><h2 class="hidden">Category Edit Form</h2>
+                <section class="row"><h3 class="hidden">Form Inputs</h3>
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <label class="required" for="name">Name</label>
+                            <input id="category-name" type="text" class="form-control input-lg" placeholder="Name">
+                        </div>
+                    </div>
+<!--                <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="required" for="active">Active / Inactive</label>
+                            <select id="active" class="form-control selectpicker">
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+                    </div> -->
+                </section>
+
+                <!-- Save Button -->
+                <section class="row save"><h3 class="hidden">Save</h3>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary pull-right">SAVE</button>
+                        <div class="clearfix"></div>
+                        <div class="underline"></div>
+                    </div>
+                </section>
+            </section>
+            </form>
+
+            <!-- <p class="root">Lorem ipsum dolor sit amet</p> -->
+
+            <!-- Forums -->
+            <article class="category"><h2 class="hidden">Forums</h2>
+                <!-- Forum -->
+                <% for(var i = 0; i < forums.length; i++){ console.log(forums.length);  %>
+                <section class="row forum"><h4 class="hidden"><%=forums[i].title%></h4>
+                    <div class="col-md-12">
+                        <!-- Forum Header -->
+                        <a class="title" href="forum-topics"><%=forums[i].title%></a>
+                        <!-- <p> Lorem ipsum dolor sit amet </p> -->
+
+                        <!-- Forum Details -->
+                        <div class="details">
+                            <table class="table">
+                                <tr>
+                                    <th>Author</th>
+                                    <th>Created on</th>
+                                    <th>Last updated
+                                        <!-- <i class="fa fa-eye-slash pull-right is" title="Click to activate"></i> -->
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td><%=forums[i].author%></td>
+                                    <td><%=forums[i].created_date%></td>
+                                    <td><%=forums[i].updated_date%></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <% } %>
+
+                <!-- Pagination -->
+                <section class="pagination-background"><h2 class="hidden">Pagination</h2>
+                    <ul class="pagination">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </section>
+            </article>
+        </section>
+        <div class="col-md-1"></div>
+        <% if(user){ %>
+        <aside class="col-md-3 sidebar"><h3 class="hidden">Sidebar</h3>
+            <!-- Buttons -->
+            <section><h4 class="hidden">Buttons</h4>
+                <button class="btn btn-danger btn-lg" id="new-forum-btn">NEW FORUM</button>
+            </section>
+
+           <div id="new-forum-modal" class="modal fade in" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal header -->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4><span class="glyphicon glyphicon-plus"></span>New forum</h4>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form role="form" method="post" action="add-forum">
+                                <div class="form-group">
+                                    <label for="new-forum-txt"> Title: </label>
+                                    <input type="text" class="form-control" id="new-forum-txt" placeholder="Enter forum title" required="true" name="newForumTitle">
+                                </div>
+                                <div class="form-group">
+                                    <label class="required" for="category">Category</label>
+                                    <select id="category" class="form-control selectpicker" name="newForumCategory">
+                                        <%for(var i = 0; i < categories.length; i++){ %>
+                                        <option value="<%=categories[i]._id%>"><%=categories[i].name %></option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="required" for="active">Active / Inactive</label>
+                                    <select id="active" class="form-control selectpicker" name="newForumStatus">
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="add-button">
+                                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>Add</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search -->
+<!--             <section><h4 class="hidden">Search</h4>
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                    <input type="text" class="form-control" placeholder="Search Forum">
+                </div>
+            </section> -->
+
+            <!-- Preferences -->
+            <section>
+                <h4><i class="fa fa-user red"></i>PREFERENCES</h4>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="profile">Profile</a></li>
+                    <li class="list-group-item"><a href="#">Setting</a></li>
+                    <li class="list-group-item"><a href="#">Logout</a></li>
+                </ul>
+            </section>
+
+            <!-- Active Threads -->
+    <!--    <section>
+                <h4>ACTIVE THREADS</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="#">I was wondering what is wrong with this world?</a><br />
+                        <span>30 Replies</span><br />
+                        <span>Last by <a href="#">John Doe</a>, <time datetime="2011-11-12 14:54:39">20 minutes ago</time></span>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#">I’m going home tonight!</a><br />
+                        <span>30 Replies</span><br />
+                        <span>Last by <a href="#">John Doe</a>, <time datetime="2011-11-12 14:54:39">20 minutes ago</time></span>
+                    </li>
+                </ul>
+            </section> -->
+
+            <!-- Latest News -->
+    <!--    <section>
+                <h4><i class="fa fa-rss red"></i>LATEST NEWS</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi.<br />
+                        <span>By <a href="#" class="author">John Doe, <time datetime="2013-04-02">02 Apr 2013</time></a></span>
+                    </li>
+                    <li class="list-group-item">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi.<br />
+                        <span>By <a href="#" class="author">John Doe, <time datetime="2013-04-02">02 Apr 2013</time></a></span>
+                    </li>
+                </ul>
+            </section> -->
+        </aside>
+        <% } %>
+    </section>

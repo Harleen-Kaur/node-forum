@@ -146,6 +146,22 @@ $(document).ready(function() {
     });
 
     // Drop Down
-    if ( $('.selectpicker').length )
-        $('.selectpicker').selectpicker();
+//     if ( $('.selectpicker').length )
+//         $('.selectpicker').selectpicker();
+
+    // New Category
+    // var newCat = document.getElementById('newCat');
+    $('#new-category-btn').click(function(){
+        $('#new-category-modal').modal();
+    });
+
+    // New Forum
+    $('#new-forum-btn').click(function(){
+        $('#new-forum-modal').modal();
+    });
+
+    //New Topic
+    $('#new-topic-btn').click(function(){
+        $('#new-topic-modal').modal();
+    });
 });

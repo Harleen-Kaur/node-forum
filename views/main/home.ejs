@@ -1,96 +1,52 @@
  <% layout('layout') -%>
 
     <!-- Home Page -->
-    <% if(message.length > 0){ %>
 <!--     <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss= "alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button> -->
-    <div id="LoginModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Error!!</h4>
-      </div>
-      <div class="modal-body">
-        <p><%= message %></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-    
-    <!-- </div> -->
-    <% } %> 
-
 
     <section class="row"><h1 class="hidden">Content</h1>
+
+
+        <% if(successMessage.length > 0){ console.log('Message: ' + successMessage); %>
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss= "alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <%= successMessage %>
+            </div>
+        <% } %>
+        
         <section class="col-md-8 main">
             <h1>FORUMS</h1>
             <p class="root"><span>Got a tip? Need some help? </span>You've come to the right place for help on getting to, through, and between topics. Share your experiences with others or post a question and get a response for it.</p>
 
-            <h2>NAVIGATE TO DIFFERENT PAGES</h2>
-            <div class="row details index">
-                <div class="col-md-4">
-                    <ul class="list-group">
-                        <li class="list-group-item"><a href="index.html">Home Page</a></li>
-                        <li class="list-group-item"><a href="sign-up.html">Sign Up Page</a></li>
-                        <li class="list-group-item"><a href="profile.html">Profile</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-group">
-                        <li class="list-group-item"><a href="faq.html">FAQ Page</a></li>
-                        <li class="list-group-item"><a href="about.html">About Page</a></li>
-                        <li class="list-group-item"><a href="contact.html">Contact Page</a></li>
-                        <li class="list-group-item"><a href="404.html">404 Page</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-group">
-                        <li class="list-group-item"><a href="forums.html">Forums</a></li>
-                        <li class="list-group-item"><a href="forums-topics.html">Topics</a></li>
-                        <li class="list-group-item"><a href="topics-posts.html">Posts</a></li>
-                        <li class="list-group-item"><a href="forums-moderators.html">Moderators</a></li>
-                    </ul>
-                </div>
-            </div>
-
             <!-- Categories -->
             <article><h2 class="hidden">Categories</h2>
-                <!-- General Category -->
-                <section class="category"><h3 class="hidden">General Category</h3>
+                <section class="category"><h3 class="hidden">Categories</h3>
                     <!-- Category Header -->
                     <header class="row">
                         <div class="col-md-12">
-                            <a class="title" href="forums.html">GENERAL</a>
+                            <a class="title" href="forums">CATEGORIES</a>
                         </div>
                     </header>
 
-                    <!-- Category Forum -->
-                    <section class="row forum"><h4 class="hidden">Announcements</h4>
+                    <!-- Category -->
+                    <% for(var i = 0; i < categories.length; i++){console.log(categories.length);  %>
+                    <section class="row forum"><h4 class="hidden"><%=categories[i].name %></h4>
                         <div class="col-md-12">
-                            <!-- Forum Header -->
-                            <a class="title" href="forums-topics.html">Announcements</a>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas
-                                id, condimentum at, laoreet mattis, massa.
-                            </p>
-
-                            <!-- Forum Details -->
+                            <!-- Category Header -->
+                            <a class="title" href="forum-topics"><%=categories[i].name %></a>
+                            <!-- <p> Lorem ipsum dolor sit amet. </p> -->
+                            <!-- Category Details -->
                             <div class="details">
                                 <table class="table">
                                     <tr>
                                         <th>TOPICS</th>
                                         <th>POSTS</th>
                                         <th rowspan="2">
-                                            <i class="fa fa-eye-slash pull-right is" title="Click to activate"></i>
+                                            <!-- <i class="fa fa-eye-slash pull-right is" title="Activated"></i> -->
                                         </th>
                                     </tr>
                                     <tr>
@@ -101,67 +57,10 @@
                             </div>
                         </div>
                     </section>
-
-                    <!-- Category Forum -->
-                    <section class="row forum"><h4 class="hidden">General Discussion</h4>
-                        <div class="col-md-12">
-                            <!-- Forum Header -->
-                            <a class="title" href="forums-topics.html">General Discussion</a>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas
-                                id, condimentum at, laoreet mattis, massa.
-                            </p>
-
-                            <!-- Forum Details -->
-                            <div class="details">
-                                <table class="table">
-                                    <tr>
-                                        <th>TOPICS</th>
-                                        <th>POSTS</th>
-                                        <th rowspan="2">
-                                            <i class="fa fa-eye-slash pull-right hidden" title="Click to deactivate"></i>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <td>140,734</td>
-                                        <td>710,966</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Category Forum -->
-                    <section class="row forum"><h4 class="hidden">Support Center</h4>
-                        <div class="col-md-12">
-                            <!-- Forum Header -->
-                            <a class="title" href="forums-topics.html">Support Center</a>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas
-                                id, condimentum at, laoreet mattis, massa.
-                            </p>
-
-                            <!-- Forum Details -->
-                            <div class="details">
-                                <table class="table">
-                                    <tr>
-                                        <th>TOPICS</th>
-                                        <th>POSTS</th>
-                                        <th rowspan="2">
-                                            <i class="fa fa-eye-slash pull-right hidden" title="Click to deactivate"></i>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <td>140,734</td>
-                                        <td>710,966</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
+                    <% } %>
 
                     <!-- Pagination -->
-                    <section class="pagination-background"><h2 class="hidden">Pagination</h2>
+<!--                     <section class="pagination-background"><h2 class="hidden">Pagination</h2>
                         <ul class="pagination">
                             <li><a href="#">&laquo;</a></li>
                             <li><a href="#">1</a></li>
@@ -171,148 +70,108 @@
                             <li><a href="#">5</a></li>
                             <li><a href="#">&raquo;</a></li>
                         </ul>
-                    </section>
-                </section>
-
-                <!-- Non-Support Specific Category -->
-                <section class="category"><h3 class="hidden">Non-Support Specific Category</h3>
-                    <!-- Category Header -->
-                    <header class="row">
-                        <div class="col-md-12">
-                            <a class="title" href="forums.html">NON-SUPPORT SPECIFIC</a>
-                        </div>
-                    </header>
-
-                    <!-- Category Forum -->
-                    <section class="row forum"><h4 class="hidden">Test Me</h4>
-                        <div class="col-md-12">
-                            <!-- Forum Header -->
-                            <a class="title" href="forums-topics.html">Test Me</a>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas
-                                id, condimentum at, laoreet mattis, massa.
-                            </p>
-
-                            <!-- Forum Details -->
-                            <div class="details">
-                                <table class="table">
-                                    <tr>
-                                        <th>TOPICS</th>
-                                        <th>POSTS</th>
-                                        <th rowspan="2">
-                                            <i class="fa fa-eye-slash pull-right hidden" title="Click to deactivate"></i>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <td>140,734</td>
-                                        <td>710,966</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Category Forum -->
-                    <section class="row forum"><h4 class="hidden">Forum Archive</h4>
-                        <div class="col-md-12">
-                            <!-- Forum Header -->
-                            <a class="title" href="forums-topics.html">Forum Archive</a>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas
-                                id, condimentum at, laoreet mattis, massa.
-                            </p>
-
-                            <!-- Forum Details -->
-                            <div class="details">
-                                <table class="table">
-                                    <tr>
-                                        <th>TOPICS</th>
-                                        <th>POSTS</th>
-                                        <th rowspan="2">
-                                            <i class="fa fa-eye-slash pull-right hidden" title="Click to deactivate"></i>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <td>140,734</td>
-                                        <td>710,966</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Category Forum -->
-                    <section class="row forum"><h4 class="hidden">Where to post what</h4>
-                        <div class="col-md-12">
-                            <!-- Forum Header -->
-                            <a class="title" href="forums-topics.html">Where to post what</a>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas
-                                id, condimentum at, laoreet mattis, massa.
-                            </p>
-
-                            <!-- Forum Details -->
-                            <div class="details">
-                                <table class="table">
-                                    <tr>
-                                        <th>TOPICS</th>
-                                        <th>POSTS</th>
-                                        <th rowspan="2">
-                                            <i class="fa fa-eye-slash pull-right hidden" title="Click to deactivate"></i>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <td>140,734</td>
-                                        <td>710,966</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Pagination -->
-                    <section class="pagination-background"><h2 class="hidden">Pagination</h2>
-                        <ul class="pagination">
-                            <li><a href="#">&laquo;</a></li>
-                            <li><a href="#">1</a></li>
-                            <li class="active"><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">&raquo;</a></li>
-                        </ul>
-                    </section>
+                    </section> -->
                 </section>
             </article>
         </section>
         <div class="col-md-1"></div>
+        <% if(user){ %>
         <aside class="col-md-3 sidebar"><h3 class="hidden">Sidebar</h3>
             <!-- Buttons -->
             <section><h4 class="hidden">Buttons</h4>
-                <button class="btn btn-danger btn-lg" onclick="function loadm(){$('#LoginModal').modal()}">NEW CATEGORY</button>
-                <button class="btn btn-danger btn-lg">NEW FORUM</button>
+                <!-- <a href="add-category"> -->
+                <button class="btn btn-danger btn-lg" id="new-category-btn">NEW CATEGORY</button>
+                <!-- </a> -->
+                <!-- <a href="add-forum"> -->
+                <button class="btn btn-danger btn-lg" id="new-forum-btn">NEW FORUM</button>
+                <!-- </a> -->
             </section>
 
-            <!-- Search -->
-            <section><h4 class="hidden">Search</h4>
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-                    <input type="text" class="form-control" placeholder="Search Category">
+           <div id="new-category-modal" class="modal fade in" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal header -->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4><span class="glyphicon glyphicon-plus"></span>New category</h4>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form role="form" method="post" action="add-category">
+                                <div class="form-group">
+                                    <label for="new-category-txt"> Name: </label>
+                                    <input type="text" class="form-control" id="new-category-txt" placeholder="Enter category name" required="true" name="newCategory">
+                                </div>
+                                <div class="add-button">
+                                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>Add Category</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Modal footer -->
+                <!--    <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div> -->
+                    </div>
                 </div>
-            </section>
+            </div>
+
+            <div id="new-forum-modal" class="modal fade in" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal header -->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4><span class="glyphicon glyphicon-plus"></span>New forum</h4>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form role="form" method="post" action="add-forum">
+                                <div class="form-group">
+                                    <label for="new-forum-txt"> Title: </label>
+                                    <input type="text" class="form-control" id="new-forum-txt" placeholder="Enter forum title" required="true" name="newForumTitle">
+                                </div>
+                                <div class="form-group">
+                                    <label class="required" for="category">Category</label>
+                                    <select id="category" class="form-control selectpicker" name="newForumCategory">
+                                        <%for(var i = 0; i < categories.length; i++){ %>
+                                        <option value="<%=categories[i]._id%>"><%=categories[i].name %></option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="required" for="active">Active / Inactive</label>
+                                    <select id="active" class="form-control selectpicker" name="newForumStatus">
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="add-button">
+                                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>Add</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Modal footer -->
+                <!--    <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
 
             <!-- Preferences -->
             <section>
                 <h4><i class="fa fa-user red"></i>PREFERENCES</h4>
                 <ul class="list-group">
-                    <li class="list-group-item"><a href="profile.html">Profile</a></li>
-                    <li class="list-group-item"><a href="#">Setting</a></li>
-                    <li class="list-group-item"><a href="#">Logout</a></li>
+                    <li class="list-group-item"><a href="profile">Profile</a></li>
+                    <li class="list-group-item"><a href="settings">Settings</a></li>
+                    <li class="list-group-item"><a href="logout">Logout</a></li>
                 </ul>
             </section>
+            <% } %> 
+
 
             <!-- Active Threads -->
-            <section>
+            <!-- <section>
                 <h4>ACTIVE THREADS</h4>
                 <ul class="list-group">
                     <li class="list-group-item">
@@ -328,7 +187,7 @@
                 </ul>
             </section>
 
-            <!-- Latest News -->
+            Latest News
             <section>
                 <h4><i class="fa fa-rss red"></i>LATEST NEWS</h4>
                 <ul class="list-group">
@@ -341,6 +200,6 @@
                         <span>By <a href="#" class="author">John Doe, <time datetime="2013-04-02">02 Apr 2013</time></a></span>
                     </li>
                 </ul>
-            </section>
+            </section>-->
         </aside>
-    </section>
+    </section> 

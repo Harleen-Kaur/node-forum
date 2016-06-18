@@ -1,4 +1,3 @@
-
 var express = require('express')
   , routes = require('./routes')
   , http = require('http')
@@ -17,9 +16,13 @@ var express = require('express')
   , passport = require('passport')
   , MongoStore = require('connect-mongo/es5')(session)
   , User = require('./models/user')
+  , Category = require('./models/category')
+  , Forum = require('./models/forum')
   , secret = require('./config/secret')
   , userRoutes = require('./routes/user')
-  , mainRoutes = require('./routes/main');
+  , mainRoutes = require('./routes/main')
+  , extraRoutes = require('./routes/extra')
+  , adminRoutes = require('./routes/admin');
 
 
 var app = express();
@@ -42,16 +45,35 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     secret: secret.secretKey,
-    store: new MongoStore({ url: secret.database, autoReconnect: true})
+    store: new MongoStore({ url: secret.database, autoReconnect: false}),
+    cookie: { _expires: 60000000 }
 }));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(function(req, res, next){
-    res.locals.user = req.user;
+    if(req.user != null){
+      res.locals.user = req.user;
+    }
+    else res.locals.user = null;
     next();
 });
 
+app.use(function(req, res, next) {
+  Category.find({}, function(err, categories) {
+    if (err) return next(err);
+    res.locals.categories = categories;
+    next();
+  });
+});
+
+app.use(function(req, res, next) {
+  Forum.find({}, function(err, forums) {
+    if (err) return next(err);
+    res.locals.forums = forums;
+    next();
+  });
+});
 
 mongoose.connect(secret.database, function(err){
 	if(err){
@@ -66,9 +88,11 @@ if ('development' == app.get('env')) {
   app.use(errorHandler());
 }
 
- app.get('/', routes.index);
+app.get('/', routes.index);
 app.use(userRoutes);
 app.use(mainRoutes);
+app.use(extraRoutes);
+app.use(adminRoutes);
 
 app.listen(secret.port, function(err){
   if(err) throw err;

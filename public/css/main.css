@@ -263,3 +263,8 @@ body, h1, h2, h3, h4, h5, h6, input, .btn, .dropdown-menu > li > a { font-weight
 .footer .navbar-inverse .navbar-nav > li > a:hover { text-decoration: underline; }
 .footer .navbar-inverse .navbar-right > li:last-child > a { margin-right: 15px; }
 .footer-background { background-color: #343446; height: 340px; margin-top: -340px; position: absolute; width: 100%; z-index: -1; }
+.modal-header,
+.modal-header h4,
+.modal-header .close { background-color: #3F4BAD; color:white !important; text-align: center; font-size: 30px; }
+.modal-body .add-button { text-align: right; }
+.modal-body .btn-default { background-color: #3F4BAD; color: white !important; }

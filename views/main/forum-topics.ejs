@@ -1,0 +1,284 @@
+<% layout('layout') -%>
+
+    <!-- Topics -->
+    <section class="row"><h1 class="hidden">Content</h1>
+        <section class="col-md-8 main"><h1 class="hidden">Forum</h1>
+            <!-- Display other forums -->
+            <section class="row"><h2 class="hidden">Display other forums of this category</h2>
+                <div class="col-md-9">
+                    <select id="forums" class="form-control selectpicker">
+                        <option value="0">Display other forums of this category</option>
+                        <option value="2">General Discussion</option>
+                        <option value="3">Support Center</option>
+                    </select>
+                </div>
+                <div class="col-md-3"></div>
+            </section>
+
+            <!-- Forum Header -->
+            <section class="forum-header">
+                <i class="fa fa-trash-o pull-right" title="Delete this forum"></i>
+                <i class="fa fa-pencil edit-forum pull-right" title="Edit this forum"></i>
+                <h1>Announcements</h1>
+            </section>
+
+            <!-- Forum Edit Form -->
+            <section class="edit-form"><h2 class="hidden">Forum Edit Form</h2>
+                <form role="form" method="post" action="edit-forum">
+                <section><h3 class="hidden">Form Inputs</h3>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="required" for="title">Title</label>
+                                <input id="title" type="text" class="form-control input-lg" placeholder="Title" name="editForumTitle">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label class="required" for="category">Category</label>
+                                <select id="category" class="form-control selectpicker" name="editForumCategory">
+                                    <%for(var i = 0; i < categories.length; i++){ %>
+                                    <option value="<%=categories[i]._id%>"><%=categories[i].name %></option>
+                                    <% } %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="required" for="active">Active / Inactive</label>
+                                <select id="active" class="form-control selectpicker" name="editForumStatus">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Save Button -->
+                <section class="row save"><h3 class="hidden">Save</h3>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary pull-right">SAVE</button>
+                        <div class="clearfix"></div>
+                        <div class="underline"></div>
+                    </div>
+                </section>
+                </form>
+            </section>
+
+            <p class="root">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa. Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet, nibh.</p>
+
+            <!-- Topics -->
+            <article><h2 class="hidden">Topics</h2>
+                <!-- Topic -->
+                <section class="topic"><h3 class="hidden">I was wondering what is wrong with this world?</h3>
+                    <!-- Topic Header -->
+                    <header class="row topic-header">
+                        <div class="col-md-12">
+                            <table>
+                                <tr>
+                                    <td><a class="title" href="topic-posts">I was wondering what is wrong with this world?</a></td>
+                                    <td>
+                                        <img src="img/user.png" width="70" height="70" class="pull-right" alt="User Photo" />
+                                        <img src="img/user.png" width="35" height="35" class="pull-right" alt="User Photo" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </header>
+                    <!-- Topic Details -->
+                    <div class="row details table-responsive">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <tr>
+                                    <th rowspan="2"><time datetime="2011-11-12 14:54:39">20 minutes<br />ago</time></th>
+                                    <th>STARTED</th>
+                                    <th>LAST POST</th>
+                                    <th>VIEWS</th>
+                                    <th>REPLIES</th>
+                                    <th rowspan="2">
+                                        <div class="pull-right">
+                                            <i class="fa fa-anchor is" title="Click to detach"></i>
+                                            <i class="fa fa-lock is" title="Click to open"></i>
+                                            <i class="fa fa-eye-slash is" title="Click to activate"></i>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>Jane Doe</td>
+                                    <td>Jane Doe</td>
+                                    <td>40</td>
+                                    <td>30</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Topic -->
+                <section class="topic"><h3 class="hidden">I’m going home tonight!</h3>
+                    <!-- Topic Header -->
+                    <header class="row topic-header">
+                        <div class="col-md-12">
+                            <table>
+                                <tr>
+                                    <td><a class="title" href="topic-posts">I’m going home tonight!</a></td>
+                                    <td>
+                                        <img src="img/user.png" width="70" height="70" class="pull-right" alt="User Photo" />
+                                        <img src="img/user.png" width="35" height="35" class="pull-right" alt="User Photo" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </header>
+                    <!-- Topic Details -->
+                    <div class="row details table-responsive">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <tr>
+                                    <th rowspan="2"><time datetime="2011-11-12 14:54:39">20 minutes<br />ago</time></th>
+                                    <th>STARTED</th>
+                                    <th>LAST POST</th>
+                                    <th>VIEWS</th>
+                                    <th>REPLIES</th>
+                                    <th rowspan="2">
+                                        <div class="pull-right">
+                                            <i class="fa fa-anchor is" title="Click to detach"></i>
+                                            <i class="fa fa-lock hidden" title="Click to close"></i>
+                                            <i class="fa fa-eye-slash hidden" title="Click to deactivate"></i>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>Jane Doe</td>
+                                    <td>Jane Doe</td>
+                                    <td>40</td>
+                                    <td>30</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Topic -->
+                <section class="topic"><h3 class="hidden">What a beautiful design...</h3>
+                    <!-- Topic Header -->
+                    <header class="row topic-header">
+                        <div class="col-md-12">
+                            <table>
+                                <tr>
+                                    <td><a class="title" href="topic-posts">What a beautiful design...</a></td>
+                                    <td>
+                                        <img src="img/user.png" width="70" height="70" class="pull-right" alt="User Photo" />
+                                        <img src="img/user.png" width="35" height="35" class="pull-right" alt="User Photo" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </header>
+                    <!-- Topic Details -->
+                    <div class="row details table-responsive">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <tr>
+                                    <th rowspan="2"><time datetime="2011-11-12 14:54:39">20 minutes<br />ago</time></th>
+                                    <th>STARTED</th>
+                                    <th>LAST POST</th>
+                                    <th>VIEWS</th>
+                                    <th>REPLIES</th>
+                                    <th rowspan="2">
+                                        <div class="pull-right">
+                                            <i class="fa fa-anchor hidden" title="Click to stick"></i>
+                                            <i class="fa fa-lock hidden" title="Click to close"></i>
+                                            <i class="fa fa-eye-slash hidden" title="Click to deactivate"></i>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>Jane Doe</td>
+                                    <td>Jane Doe</td>
+                                    <td>40</td>
+                                    <td>30</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Pagination -->
+            <footer class="pagination-background">
+                <ul class="pagination">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li class="active"><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
+            </footer>
+        </section>
+
+        <div class="col-md-1"></div>
+        <% if(user){ %>
+        <aside class="col-md-3 sidebar"><h3 class="hidden">Sidebar</h3>
+            <!-- Buttons -->
+            <section><h4 class="hidden">Buttons</h4>
+                <button class="btn btn-danger btn-lg">NEW TOPIC</button>
+            </section>
+
+            <!-- Search -->
+<!--             <section><h4 class="hidden">Search</h4>
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                    <input type="text" class="form-control" placeholder="Search Topic">
+                </div>
+            </section> -->
+
+            <!-- Preferences -->
+            <section>
+                <h4><i class="fa fa-user red"></i>PREFERENCES</h4>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="profile">Profile</a></li>
+                    <li class="list-group-item"><a href="#">Setting</a></li>
+                    <li class="list-group-item"><a href="#">Logout</a></li>
+                </ul>
+            </section>
+
+            <!-- Active Threads -->
+ <!--            <section>
+                <h4>ACTIVE THREADS</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="#">I was wondering what is wrong with this world?</a><br />
+                        <span>30 Replies</span><br />
+                        <span>Last by <a href="#">John Doe</a>, <time datetime="2011-11-12 14:54:39">20 minutes ago</time></span>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#">I’m going home tonight!</a><br />
+                        <span>30 Replies</span><br />
+                        <span>Last by <a href="#">John Doe</a>, <time datetime="2011-11-12 14:54:39">20 minutes ago</time></span>
+                    </li>
+                </ul>
+            </section> -->
+
+            <!-- Latest News -->
+<!--             <section>
+                <h4><i class="fa fa-rss red"></i>LATEST NEWS</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi.<br />
+                        <span>By <a href="#" class="author">John Doe, <time datetime="2013-04-02">02 Apr 2013</time></a></span>
+                    </li>
+                    <li class="list-group-item">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi.<br />
+                        <span>By <a href="#" class="author">John Doe, <time datetime="2013-04-02">02 Apr 2013</time></a></span>
+                    </li>
+                </ul>
+            </section> -->
+        </aside>
+        <% } %>
+    </section>
