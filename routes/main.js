@@ -11,8 +11,17 @@ router.get('/home',function(req,res){
   });
 });
 
-router.get('/forums', function(req, res) {
+router.get('/forums/:id', function(req, res) {
 	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate,max-stale=0, post-check=0, pre-check=0');
+	Forums
+    .find({ category: req.params.id })
+    .populate('category')
+    .exec(function(err, products) {
+      if (err) return next(err);
+      res.render('main/category', {
+        products: products
+      });
+    });
 	res.render('main/forums',{
 		title: 'Forums',
 		message: ''
